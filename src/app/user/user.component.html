@@ -1,0 +1,35 @@
+
+<div *ngIf="showHeader" class="container" >
+    <h2>Input User</h2>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+        <div>
+            <label for="user_name">User Id:</label>
+            <input type="text" id="user_id" name="user_id" [(ngModel)]="user.user_id" required>
+            </div>
+        <div>
+            <label for="user_name">Username:</label>
+            <input type="text" id="user_name" name="user_name" [(ngModel)]="user.user_name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input type="phone" id="phone" name="phone" [(ngModel)]="user.phone" required>
+        </div>
+        <div>
+            <label for="role">Role:</label>
+            <!-- <input type="number" id="role" name="role" [(ngModel)]="user.role" required> -->
+            <select id="role" [(ngModel)]="selectedRole" (change)="onRoleChange($event)" name="role">
+                <!-- Loop melalui array keys untuk membuat opso -->
+                 <option *ngFor="let roleKey of userRoleKeys" [value]="userRoles[roleKey]">
+                    {{ roleKey }}
+                 </option>
+            </select>
+            <p>Role yang dipilih: {{ selectedRole }}</p>
+        </div>
+        <button type="submit" [disabled]="!userForm.form.valid">Submit</button>
+    </form>
+    <button [routerLink]="['/']" class="btn btn-secondary">Back to Home</button>
+</div>

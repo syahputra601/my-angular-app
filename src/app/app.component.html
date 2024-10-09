@@ -1,0 +1,138 @@
+<!-- src/app/app.component.html -->
+<!-- <div class="container"> -->
+<div class="container" *ngIf="showHeader">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Brand</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <!-- <a class="nav-link" href="#">Abouts</a> -->
+                <a class="nav-link" routerLink="/about">Abouts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+          </ul>
+      </div>
+  </nav>
+
+  <div class="content">
+      <h1 class="text-center mt-4">Selamat Datang di Aplikasi Testing Saya!</h1>
+      <p class="text-center">Ini adalah contoh penggunaan Bootstrap 5 di Angular.</p>
+      <div class="text-center">
+          <!-- <button class="btn btn-primary">Tombol Bootstrap</button> -->
+          <br><br>
+          <button class="btn btn-primary"  (click)="refreshPage()" >Refresh Page</button>
+          <br><br>
+          <!-- <button class="btn btn-primary"  [routerLink]="['/about']" >Go To Page Abouts</button> -->
+          <!-- <app-about></app-about> -->
+          <!-- <router-outlet></router-outlet> -->
+           <!-- <app-about></app-about> -->
+          <br><br>
+          <button class="btn btn-primary"  (click)="navigateToLogin()" >Go To Page Login</button>
+          <!-- <a routerLink="/login">Go to Login Version 2</a> -->
+           <br><br>
+          <button class="btn btn-primary"  (click)="navigateToAbout()" >Go To Page About</button>
+          <br><br>
+          <button class="btn btn-primary" (click)="navigateToSearchAuto()" >Go To Page Search Autocomplete</button>
+          <br><br>
+          <button class="btn btn-primary"  (click)="navigateToUser()" >Go To Page Form Input</button>
+          <!-- <br><br>
+          <button class="btn btn-primary" (click)="navigateToEditUser()" >Go To Page Form Edit</button> -->
+          <br><br>
+          <button class="btn btn-primary" (click)="navigateToUserList()" >Go To Page User List</button>
+      </div>
+  </div>
+  <!-- AUTOCOMPLETE DATA USER -->
+   <!-- <div>
+    <H1>Autocomplete Data User</H1>
+        <div>
+            <mat-form-field class="example-full-width">
+                <input type="text" placeholder="Cari User" aria-label="User" matInput [formControl]="searchControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{ option.user_name }} - {{ option.email }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+        </div>
+   </div> -->
+
+  <!-- DAFTAR PENGGUNA -->
+  <div>
+    <h1>Daftar Pengguna</h1>
+    <ul>
+        <li *ngFor="let user of users">
+        {{ user.user_name }} - {{ user.email }}
+          <!-- {{ user.role }} -->
+        </li>
+    </ul>
+
+   </div>
+   <!-- START BUAT MODAL -->
+   <!-- *ngIf="showHeader" -->
+   <div class="container mt-4">
+    <h2>Daftar Pengguna Version Modal</h2>
+    
+    <!-- Tombol Tambah User -->
+    <button class="btn btn-success mb-3" (click)="openAddUserModal()">Tambah Users</button>
+  
+    <!-- Autocomplete Search -->
+    <div class="mb-3">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Cari User" aria-label="User" matInput [formControl]="searchControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option.user_name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    
+    <!-- Tabel Daftar Pengguna -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nama</th>
+          <th>Email</th>
+          <th>Telepon</th>
+          <th>Role</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.user_id }}</td>
+          <td>{{ user.user_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ getRoleDescription(+user.role) }}</td>
+          <td>
+            <!-- Tombol Edit -->
+            <button class="btn btn-primary btn-sm me-2" (click)="openEditUserModal(user)">Edit</button>
+            
+            <!-- Tombol Delete -->
+            <button class="btn btn-danger btn-sm" (click)="deleteUserModal(user.user_id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   <!-- END BUAT MODAL -->
+</div>
+<router-outlet></router-outlet>
+<!-- Pastikan untuk menambahkan script Bootstrap sebelum tag penutup </body> di src/index.html jika menggunakan JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
