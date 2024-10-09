@@ -28,7 +28,8 @@ export class AppComponent implements OnInit{
   //   {"user_name":"Syahputra","email":"syahputra@ymail.com"},
   //   {"user_name":"Firman","email":"firman@ymail.com"}
   // ];
-  //testing
+  showHeader_git: boolean = true;
+  //testing development
 
   searchControl = new FormControl(); //Control untuk input autocompolete
   filteredOptions: Observable<any[]>; // Observable untuk opsi yang terfilter
