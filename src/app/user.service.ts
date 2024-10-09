@@ -2,6 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
+import gql from 'graphql-tag';
+import { map } from 'rxjs/operators';
+
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +25,28 @@ export class UserService {
   private apiUrlUpdateUser = 'http://localhost/api/update_user_v2.php';
   private apiUrlDeleteUser = 'http://localhost/api/delete_user.php';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+  ) { }
+
+    //Query untuk mengambil daftar user
+    // getUsersConn(): Observable<User[]> {
+    //   return this.apollo.watchQuery<any>({
+    //     query: gql`
+    //       query {
+    //         users {
+    //           id
+    //           name
+    //           email
+    //         }
+    //       }
+    //     `
+    //   })
+    //   .valueChanges
+    //   .pipe(
+    //     map(result => result.data && result.data.users)
+    //   );
+    // }
 
     getUsers(): Observable<any> {
       return this.http.get(this.apiUrl);

@@ -26,6 +26,7 @@ import { SearchComponent } from './search/search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserModalComponent } from './user-modal/user-modal.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,7 @@ import { UserModalComponent } from './user-modal/user-modal.component';
     UserComponent,
     SuccessDialogComponent,
     EditUserComponent,
-    UserListComponent,
+    UserListComponent,  
     SearchComponent,
     UserModalComponent,
   ],
