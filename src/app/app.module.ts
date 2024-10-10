@@ -26,6 +26,10 @@ import { SearchComponent } from './search/search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserModalComponent } from './user-modal/user-modal.component';
 
+import { ApolloModule, Apollo } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
 
 @NgModule({
   declarations: [
@@ -58,9 +62,21 @@ import { UserModalComponent } from './user-modal/user-modal.component';
     MatInputModule, // Untuk input Angular Material
     MatAutocompleteModule, // Untuk autocomplete
     // RouterModule.forRoot(appRoutes)
+    ApolloModule,
+    HttpLinkModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [SuccessDialogComponent, UserModalComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(
+    apollo: Apollo,
+    httpLink: HttpLink
+  ) {
+    apollo.create({
+      link: httpLink.create({ uri: 'https://graphqlzero.almansi.me/api' }),
+      cache: new InMemoryCache(),
+    });
+  }
+ }

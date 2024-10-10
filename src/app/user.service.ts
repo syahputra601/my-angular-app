@@ -2,8 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
-import gql from 'graphql-tag';
+// import gql from 'graphql-tag';
 import { map } from 'rxjs/operators';
+import { Apollo } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import gql from 'graphql-tag';
+// import { ApolloClient } from 'apollo-client';
+
+// const client = new ApolloClient({
+//   link: HttpLink.create({ uri: 'https://graphqlzero.almansi.me/api' }),
+//   cache: new InMemoryCache(),
+// });
+
 
 export interface User {
   id: number;
@@ -29,6 +40,20 @@ export class UserService {
     private http: HttpClient,
   ) { }
 
+
+  
+    // testZero(): Observable<any> {
+    //   return client.query({
+    //     query: gql`
+    //     {
+    //       user(id: 1) {
+    //         id
+    //         name
+    //       }
+    //     }
+    //   ` }).then(console.log);
+    // }
+
     //Query untuk mengambil daftar user
     // getUsersConn(): Observable<User[]> {
     //   return this.apollo.watchQuery<any>({
@@ -46,6 +71,17 @@ export class UserService {
     //   .pipe(
     //     map(result => result.data && result.data.users)
     //   );
+    // }
+
+    // testZero(): Observable<any> {
+    //   client.query({ query: gql`
+    //     {
+    //       user(id: 1) {
+    //         id
+    //         name
+    //       }
+    //     }
+    //   `}).then(console.log);
     // }
 
     getUsers(): Observable<any> {
@@ -146,5 +182,7 @@ export class UserService {
 
 
     //END BAGIAN KEPERLUAN UNTUK TESTINGG MODAL
+
+    
 
 }
