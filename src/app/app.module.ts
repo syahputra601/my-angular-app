@@ -29,6 +29,7 @@ import { UserModalComponent } from './user-modal/user-modal.component';
 import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { AboutModule } from './about/about.module';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
     // RouterModule.forRoot(appRoutes)
     ApolloModule,
     HttpLinkModule,
+    AboutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
