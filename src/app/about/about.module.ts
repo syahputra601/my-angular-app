@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MyComponentComponent } from './features/my-component.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [MyComponentComponent],
   imports: [
     CommonModule,
   ]
