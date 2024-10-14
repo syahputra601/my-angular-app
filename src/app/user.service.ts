@@ -18,7 +18,7 @@ import gql from 'graphql-tag';
 
 export interface User {
   id: number;
-  name: string;
+  name: string; 
   email: string;
 }
 
