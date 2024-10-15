@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { SearchComponent } from './search/search.component';
+import { MyComponentComponent } from './about/features/my-component.component';
 
 import { ErrorComponent } from './error/error.component';
 
@@ -45,6 +46,9 @@ const routes: Routes = [
   { path: 'search',
     component: SearchComponent //profile route
   },
+  // { path: 'app-my-component',
+  //   component: MyComponentComponent //profile route
+  // },
   {
     path: '**',
     component: ErrorComponent //redirect jika route tidak ditemukan
