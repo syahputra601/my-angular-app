@@ -10,6 +10,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { SearchComponent } from './search/search.component';
 import { MyComponentComponent } from './about/features/my-component.component';
+import { BarangComponent } from './barang/barang.component';
 
 import { ErrorComponent } from './error/error.component';
 
@@ -49,6 +50,9 @@ const routes: Routes = [
   // { path: 'app-my-component',
   //   component: MyComponentComponent //profile route
   // },
+  { path: 'barang',
+    component: BarangComponent //profile route
+  },
   {
     path: '**',
     component: ErrorComponent //redirect jika route tidak ditemukan

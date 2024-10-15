@@ -6,6 +6,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule, Routes } from '@angular/router'; // Untuk routing
 
+//project login
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -30,6 +34,7 @@ import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { AboutModule } from './about/about.module';
+import { BarangComponent } from './barang/barang.component';
 
 
 @NgModule({
@@ -47,6 +52,7 @@ import { AboutModule } from './about/about.module';
     UserListComponent,  
     SearchComponent,
     UserModalComponent,
+    BarangComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +73,7 @@ import { AboutModule } from './about/about.module';
     HttpLinkModule,
     AboutModule,
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
   bootstrap: [AppComponent],
   entryComponents: [SuccessDialogComponent, UserModalComponent]
 })

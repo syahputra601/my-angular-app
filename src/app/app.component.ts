@@ -115,7 +115,7 @@ export class AppComponent implements OnInit{
 
   // Fungsi untuk menentukan apakah header harus disembunyikan
   private isHiddenHeaderRoute(url: string): boolean {
-    const hiddenRoutes = ['/login', '/about', '/user', '/success-dialog', '/edit-user', '/user-list','/search']; // Tambahkan rute yang ingin disembunyikan
+    const hiddenRoutes = ['/login', '/about', '/user', '/success-dialog', '/edit-user', '/user-list','/search', '/barang']; // Tambahkan rute yang ingin disembunyikan
     return hiddenRoutes.includes(url);
   }
 
@@ -146,6 +146,10 @@ export class AppComponent implements OnInit{
 
   navigateToSearchAuto(){
     this.router.navigate(['./search']);
+  }
+
+  navigateToBarang(){
+    this.router.navigate(['./barang']);
   }
 
   // refreshPage() {
