@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule, Routes } from '@angular/router'; // Untuk routing
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 //project login
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -35,6 +36,7 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { AboutModule } from './about/about.module';
 import { BarangComponent } from './barang/barang.component';
+import { MasukComponent } from './masuk/masuk.component';
 
 
 @NgModule({
@@ -53,6 +55,7 @@ import { BarangComponent } from './barang/barang.component';
     SearchComponent,
     UserModalComponent,
     BarangComponent,
+    MasukComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,9 @@ import { BarangComponent } from './barang/barang.component';
     HttpLinkModule,
     AboutModule,
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {  provide: LocationStrategy, useClass: HashLocationStrategy }
+   ],
   bootstrap: [AppComponent],
   entryComponents: [SuccessDialogComponent, UserModalComponent]
 })

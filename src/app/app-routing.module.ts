@@ -11,6 +11,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SearchComponent } from './search/search.component';
 import { MyComponentComponent } from './about/features/my-component.component';
 import { BarangComponent } from './barang/barang.component';
+import { MasukComponent } from './masuk/masuk.component';
 
 import { ErrorComponent } from './error/error.component';
 
@@ -52,6 +53,9 @@ const routes: Routes = [
   // },
   { path: 'barang',
     component: BarangComponent //profile route
+  },
+  { path: 'masuk',
+    component: MasukComponent //profile route
   },
   {
     path: '**',

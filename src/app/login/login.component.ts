@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
         console.log('Login successful', response);
         // Simpan token JWT di localStorage
         localStorage.setItem('token', response.token);
-        this.navigateToUserList();
+        // this.navigateToUserList();
+        this.navigateToMasuk();
       },
       error => {
         console.log('Login failed', error);
@@ -46,6 +47,10 @@ export class LoginComponent implements OnInit {
 
   navigateToUserList(){
     this.router.navigate(['./user-list']);
+  }
+
+  navigateToMasuk(){
+    this.router.navigate(['./masuk']);
   }
 
   ngOnInit(): void {

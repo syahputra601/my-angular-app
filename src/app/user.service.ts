@@ -36,6 +36,9 @@ export class UserService {
   private apiUrlUpdateUser = 'http://localhost/api/update_user_v2.php';
   private apiUrlDeleteUser = 'http://localhost/api/delete_user.php';
 
+  //bagian project admin
+  private apiUrl2 = 'http://localhost/api/getusersV2.php';
+
   constructor(
     private http: HttpClient,
   ) { }
@@ -86,6 +89,10 @@ export class UserService {
 
     getUsers(): Observable<any> {
       return this.http.get(this.apiUrl);
+    }
+
+    getUsersV2(): Observable<any> {
+      return this.http.get(this.apiUrl2);
     }
 
     getUsersById(): Observable<any> {
