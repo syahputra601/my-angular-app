@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
         console.log('Login successful', response);
         // Simpan token JWT di localStorage
         localStorage.setItem('token', response.token);
+        // Menyimpan data user di localStorage (atau gunakan sessionStorage)
+        localStorage.setItem('user', JSON.stringify(response.user));
         // this.navigateToUserList();
         this.navigateToMasuk();
       },

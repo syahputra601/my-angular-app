@@ -38,6 +38,9 @@ export class UserService {
 
   //bagian project admin
   private apiUrl2 = 'http://localhost/api/getusersV2.php';
+  private apiUrl_count_alluser = 'http://localhost/api/get_count_alluser.php';
+  private apiUrl_count_allbarang = 'http://localhost/api/get_count_allbarang.php';
+  private apiUrlBarang = 'http://localhost/api/get_barang.php';
 
   constructor(
     private http: HttpClient,
@@ -190,6 +193,34 @@ export class UserService {
 
     //END BAGIAN KEPERLUAN UNTUK TESTINGG MODAL
 
+    //version dengan sistem login
+    deleteUserByIdV4(username: any): Observable<any> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
+
+      // Kirim request DELETE dengan JSON yang berisi user_id
+      return this.http.request('delete', `http://localhost/api/delete_user_new.php?username=${username}`, {
+        body: { username: username },
+        headers: httpOptions.headers
+      });
+    }
+
+  //count data all user
+  // Method untuk mengambil jumlah data
+  getCountUser(): Observable<any> {
+    return this.http.get(this.apiUrl_count_alluser);
+  }
+
+  getCountBarang(): Observable<any> {
+    return this.http.get(this.apiUrl_count_allbarang);
+  }
+
+  getBarangs(): Observable<any> {
+    return this.http.get(this.apiUrlBarang);
+  }
     
 
 }
